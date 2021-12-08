@@ -4,8 +4,12 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
-            System.out.print("Ticket Count: ");
-            int ticketCount = scanner.nextInt();
+            int ticketCount = 0;
+            while (ticketCount <= 0 || ticketCount > 10) {
+                System.out.print("Ticket Count: ");
+                ticketCount = scanner.nextInt();
+            }
+
             System.out.print("Ticket Price: ");
             double ticketPrice = scanner.nextDouble();
 

@@ -32,7 +32,7 @@ class TicketMachine {
     }
 
     public static void printTicket(int ticketCount) {
-        System.out.print("\nPrinting Ticket");
+        System.out.printf("\nPrinting %d Ticket%s", ticketCount, ticketCount > 1 ? "s" : "");
         for (int i = 0; i < 8; i++) {
             System.out.print(" . ");
             try {
