@@ -27,10 +27,10 @@ public class HelloWorld {
         }
     }
 
-    public static Boolean askYesNo() {
-        System.out.print("Do you want to convert more money from your budget? [y/n] ");
-        String answer = _scanner.next();
-        return (answer.equals("yes") || answer.equals("y") || answer.isEmpty());
+    public static Boolean askYesNo(String question) {
+        System.out.printf("%s [y/n] ", question);
+        String answer = _scanner.next().toLowerCase(); // NOTE: doesn't catch carriage return character
+        return (answer.equals("yes") || answer.equals("y"));
     }
 
     public static void main(String[] args) {
@@ -68,9 +68,9 @@ public class HelloWorld {
                     throw new UnsupportedOperationException();
             }
 
-            budget -= amount; // NOTE: allows negative ballance for now
+            budget -= amount;
             System.out.printf("Budget Now: %.2f%n", budget);
-            repeat = (budget >= LOWERBOUND) ? askYesNo() : false;
+            repeat = (budget >= LOWERBOUND) ? askYesNo("Do you want to convert more money from your budget?") : false;
         }
 
         _scanner.close();
