@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 class TicketMachine {
     public static final ArrayList<Double> COINS = new ArrayList<Double>() {
@@ -19,13 +18,11 @@ class TicketMachine {
         double amountPaid = 0.0;
         double amountPayable = ticketPrice * ticketCount;
 
-        try (Scanner scanner = new Scanner(System.in)) {
-            while (amountPaid < amountPayable) {
-                System.out.printf("Amount Due: %f\n", (amountPayable - amountPaid));
-                System.out.print("Insert another coin: ");
-                double coinInserted = scanner.nextDouble();
-                amountPaid += coinInserted;
-            }
+        while (amountPaid < amountPayable) {
+            System.out.printf("Amount Due: %f\n", (amountPayable - amountPaid));
+            System.out.print("Insert another coin: ");
+            double coinInserted = Utils.SCANNER.nextDouble();
+            amountPaid += coinInserted;
         }
 
         return amountPaid;
