@@ -35,11 +35,7 @@ class TicketMachine {
         System.out.printf("\nPrinting %d Ticket%s", ticketCount, ticketCount > 1 ? "s" : "");
         for (int i = 0; i < 8; i++) {
             System.out.print(" . ");
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            Utils.sleep(100);
         }
         System.out.println("\n\n");
     }
@@ -56,7 +52,7 @@ class TicketMachine {
 
             double coin = COINS.get(i);
             balance -= coin;
-            balance = Math.floor(balance * 100 + 0.5) / 100;
+            balance = Utils.round(balance, 2);
             change.add(coin);
         }
 
