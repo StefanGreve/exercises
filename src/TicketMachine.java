@@ -14,12 +14,12 @@ class TicketMachine {
         }
     };
 
-    public static double processPayment(double ticketPrice, int ticketCount) {
+    public static double processPayment(Ticket ticket) {
         double amountPaid = 0.0;
-        double amountPayable = ticketPrice * ticketCount;
+        double amountPayable = ticket.getPrice() * ticket.getAmount();
 
         while (amountPaid < amountPayable) {
-            System.out.printf("Amount Due: %f\n", (amountPayable - amountPaid));
+            System.out.printf("Amount Due: %.2f\n", (amountPayable - amountPaid));
             System.out.print("Insert another coin: ");
             double coinInserted = Utils.SCANNER.nextDouble();
             amountPaid += coinInserted;
@@ -28,18 +28,9 @@ class TicketMachine {
         return amountPaid;
     }
 
-    public static void printTicket(int ticketCount) {
-        System.out.printf("\nPrinting %d Ticket%s", ticketCount, ticketCount > 1 ? "s" : "");
-        for (int i = 0; i < 8; i++) {
-            System.out.print(" . ");
-            Utils.sleep(100);
-        }
-        System.out.println("\n\n");
-    }
-
-    public static ArrayList<Double> returnChange(double amountPaid, double ticketPrice, int ticketCount) {
+    public static ArrayList<Double> returnChange(Ticket ticket, double amountPaid) {
         int i = 0;
-        double balance = amountPaid - (ticketPrice * ticketCount);
+        double balance = amountPaid - (ticket.getPrice() * ticket.getAmount());
         ArrayList<Double> change = new ArrayList<Double>();
 
         while (balance > 0) {
