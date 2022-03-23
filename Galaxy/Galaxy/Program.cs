@@ -6,7 +6,15 @@ namespace Galaxy
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("test");
+			Spaceship enterprise = new Spaceship("Enterprise NX-01", "Jonathan Archer", 1995);
+			enterprise.SendMessage("Hello, World!");
+
+			List<InformationSystem.Message> messages = InformationSystem.Database.LoadMessages();
+			
+			foreach (var message in messages.Where(m => m.Sender == enterprise.Name))
+			{
+				Console.WriteLine($"{message.Id, 3}\t{message.Created}\tMESSAGE {message.Content} FROM {message.Sender}");
+			}
 		}
 	}
 }

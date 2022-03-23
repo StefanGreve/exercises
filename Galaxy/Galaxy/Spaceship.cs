@@ -8,6 +8,8 @@ namespace Galaxy
 {
 	public class Spaceship
 	{
+		public string Name { get; set; }
+
 		public string Captain { get; set; }
 
 		public int YearsOfService { get; set; }
@@ -26,15 +28,16 @@ namespace Galaxy
 
 		public List<Cargo> Cargos { get; set; } = new List<Cargo>();
 
-		public Spaceship(string captain, int firstYearOfService)
+		public Spaceship(string name, string captain, int firstYearOfService)
 		{
+			Name = name;
 			Captain = captain;
 			YearsOfService = DateTime.Now.Year - firstYearOfService;
 		}
 
 		public void SendMessage(string message)
 		{
-			throw new NotImplementedException();
+			InformationSystem.Database.SendMessage(content: message, sender: Name);
 		}
 
 		public List<string> GetLogBook()
