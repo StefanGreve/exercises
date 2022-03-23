@@ -14,11 +14,14 @@ namespace Galaxy
 
 		public double Accuracy { get; set; }
 
-		public Weapon(string name, double damage, double accuracy)
+		public int Count { get; set; }
+
+		public Weapon(string name, double damage, double accuracy, int count = 1)
 		{
 			Name = name;
 			Damage = damage;
 			Accuracy = accuracy;
+			Count = count;
 		}
 
 		public override bool Equals(object? obj) => (obj is Weapon other) && Equals(other);
