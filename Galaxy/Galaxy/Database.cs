@@ -8,7 +8,7 @@ using System.Data;
 using System.Data.SQLite;
 using Dapper;
 
-namespace Galaxy.InformationSystem
+namespace Galaxy
 {
 	public class Database
 	{
@@ -17,18 +17,17 @@ namespace Galaxy.InformationSystem
 			return ConfigurationManager.ConnectionStrings[name].ConnectionString;
 		}
 
-		public static List<Message> LoadMessages()
+		public static List<T> LoadModel<T>(string table)
 		{
 			using IDbConnection connection = new SQLiteConnection(LoadConnectionString());
-			var output = connection.Query<Message>("SELECT * FROM Message", new DynamicParameters());
+			var output = connection.Query<T>($"SELECT * FROM {table}", new DynamicParameters());
 			return output.ToList();
 		}
 
-		public static void SendMessage(string content, string sender)
-		{
-			Message message = new(content, sender);
+		public static void InsertModel<T>(T model, string table, string[] properties)
+		{ 
 			using IDbConnection connection = new SQLiteConnection(LoadConnectionString());
-			connection.Execute("INSERT INTO Message (Content,Sender,Created) values (@Content,@Sender,@Created)", message);
+			connection.Execute($"INSERT INTO {table} ({string.Join(",", properties)}) values ({string.Join(",", properties.Select(p => $"@{p}"))})", model);
 		}
 	}
 }

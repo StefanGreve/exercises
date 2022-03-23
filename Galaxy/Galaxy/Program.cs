@@ -7,9 +7,9 @@ namespace Galaxy
 		static void Main(string[] args)
 		{
 			Spaceship enterprise = new Spaceship("Enterprise NX-01", "Jonathan Archer", 1995);
-			enterprise.SendMessage("Hello, World!");
+			enterprise.SendMessage("Hello, World!!");
 
-			List<InformationSystem.Message> messages = InformationSystem.Database.LoadMessages();
+			List<Message> messages = Database.LoadModel<Message>("Message");
 			
 			foreach (var message in messages.Where(m => m.Sender == enterprise.Name))
 			{

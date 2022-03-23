@@ -37,7 +37,7 @@ namespace Galaxy
 
 		public void SendMessage(string message)
 		{
-			InformationSystem.Database.SendMessage(content: message, sender: Name);
+			Database.InsertModel<Message>(new(message, Name), "Message", new[] { "Content", "Sender", "Created" });
 		}
 
 		public List<string> GetLogBook()
