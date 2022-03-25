@@ -8,6 +8,8 @@ namespace Galaxy
 {
 	public class Weapon : IEquatable<Weapon>
 	{
+		public bool PiercingDamage { get; private set; }
+
 		public string Name { get; set; }
 
 		public double Damage { get; set; }	
@@ -16,12 +18,13 @@ namespace Galaxy
 
 		public int Count { get; set; }
 
-		public Weapon(string name, double damage, double accuracy, int count = 1)
+		public Weapon(string name, double damage, double accuracy, bool piercingDamage, int count = 1)
 		{
 			Name = name;
 			Damage = damage;
 			Accuracy = accuracy;
 			Count = count;
+			PiercingDamage = piercingDamage;
 		}
 
 		public override bool Equals(object? obj) => (obj is Weapon other) && Equals(other);
