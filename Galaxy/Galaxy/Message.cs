@@ -16,10 +16,12 @@ namespace Galaxy
 
 		public DateTime Created { get; set; } = DateTime.Now;
 
+#pragma warning disable 8618
 		public Message()
 		{
 			// NOTE: This method is used in the Database class
 		}
+#pragma warning restore 8618
 
 		public Message(string content, string sender)
 		{
