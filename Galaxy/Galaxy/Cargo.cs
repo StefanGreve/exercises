@@ -23,6 +23,8 @@ namespace Galaxy
 
 		public double GetTotalWeight() => Weight * Count;
 
+		public override string ToString() => $"{Name}\t{Weight:2}kg ({Count} piece{(Count > 1 ? 's' : string.Empty)})";
+
 		public override bool Equals(object? obj) => (obj is Cargo other) && Equals(other);
 
 		public bool Equals(Cargo? other)
@@ -30,7 +32,7 @@ namespace Galaxy
 			if (other is null) return false;
 
 			if (ReferenceEquals(this, other)) return true;
-			
+
 			return (Name == other.Name && Weight == other.Weight);
 		}
 

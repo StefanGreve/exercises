@@ -72,9 +72,32 @@ namespace Galaxy
 			}
 		}
 
+		public void GetStatusUpdate()
+		{
+			Console.WriteLine($"Status Update of {Name} ({new DateTime()})");
+			Console.WriteLine($"Power Supply:			{PowerSupply}%");
+			Console.WriteLine($"Protective Shield:		{ProtectiveShield}%");
+			Console.WriteLine($"Life Support Shield:	{LifeSupportShield}%");
+		}
+
 		public void RequestRepair(bool powerSupply, bool protectiveShield, bool lifeSupportShield, int androidCount)
 		{
-			throw new NotImplementedException();
+			int tmp = 10 * androidCount;
+
+			if (powerSupply)
+			{
+				PowerSupply = (PowerSupply + tmp) > 100 ? 100 : tmp;
+			}
+
+			if (protectiveShield)
+			{
+				ProtectiveShield = (ProtectiveShield + tmp) > 100 ? 100 : tmp;
+			}
+
+			if (lifeSupportShield)
+			{
+				LifeSupportShield = (LifeSupportShield + tmp) > 100 ? 100 : tmp;
+			}
 		}
 	}
 }

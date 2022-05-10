@@ -12,7 +12,7 @@ namespace Galaxy
 
 		public string Name { get; set; }
 
-		public double Damage { get; set; }	
+		public double Damage { get; set; }
 
 		public double Accuracy { get; set; }
 
@@ -26,6 +26,8 @@ namespace Galaxy
 			Count = count;
 			PiercingDamage = piercingDamage;
 		}
+
+		public Cargo ToCargo() => new(Name, Damage * Accuracy / Count, Count);
 
 		public override bool Equals(object? obj) => (obj is Weapon other) && Equals(other);
 
