@@ -32,7 +32,7 @@ class Grocery(object):
         return f"{__class__.__name__} (name={self.name},amount={self.amount},detract={self.detract})"
 
     def __str__(self) -> str:
-        return f"{self.name} ({self.amount}g)"
+        return f"{self.name} ({self.amount}{'ml' if self.is_fluid else 'g'})"
 
 class Bread(Grocery):
     def __init__(self, amount: int, bread_type: BreadType):
@@ -65,7 +65,7 @@ def main():
         food.eat()
         food.drink()
 
-    print(refrigerator.groceries)
+    print(list(map(str, refrigerator.groceries)))
 
 if __name__ == '__main__':
     main()
