@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from abc import ABC
 from enum import Enum, unique
 
 @unique
