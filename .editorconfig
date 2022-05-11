@@ -2,7 +2,7 @@ root = true
 
 [*]
 indent_size = 4
-indent_style = tab
+indent_style = space
 tab_width = 4
 end_of_line = lf
 charset = utf-8
@@ -10,13 +10,3 @@ trim_trailing_whitespaces = true
 insert_final_newline = true
 max_line_length = 160
 
-[*.java]
-indent_size = 4
-indent_style = space
-
-[{*.yml,*.yaml}]
-indent_style = space
-indent_size = 2
-ij_continuation_indent_size = 2
-ij_yaml_keep_indents_on_empty_lines = false
-ij_yaml_keep_line_breaks = true
